@@ -46,3 +46,55 @@ window.addEventListener("scroll", function () {
     backTopBtn.classList.remove("active");
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cubeContainer = document.querySelector('.cube-container');
+  const particlesContainer = document.querySelector('.particles');
+  const hoverArea = document.querySelector('.hover-area');
+
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 0.3;
+    const y = (e.clientY / window.innerHeight - 0.5) * 0.3;
+    const rotateX = y * 10;
+    const rotateY = x * 15;
+    cubeContainer.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    particle.style.left = `${x}%`;
+    particle.style.top = `${y}%`;
+    particlesContainer.appendChild(particle);
+    setTimeout(() => {
+      particle.remove();
+    }, 12000);
+  }
+
+  setInterval(createParticle, 200);
+
+  let hoverInterval;
+  hoverArea.addEventListener('mouseenter', () => {
+    hoverInterval = setInterval(createParticle, 100);
+  });
+  hoverArea.addEventListener('mouseleave', () => {
+    clearInterval(hoverInterval);
+  });
+});
