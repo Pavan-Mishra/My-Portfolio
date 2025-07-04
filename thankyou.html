@@ -100,13 +100,22 @@
       color: var(--black);
       box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
     }
+
+    .thankyou-card {
+  position: relative;
+  z-index: 1;
+}
+
+.thankyou-card::before {
+  z-index: -1; /* ✅ Puts the glow behind */
+}
   </style>
 </head>
-<body>
+<body> 
   <div class="thankyou-card">
     <h2>Thank You!</h2>
     <p>Your message has been sent successfully. I’ll get back to you soon!</p>
-    <a href="index.html" class="btn-submit">Back to Home</a>
+    <a href="https://pavan-mishra.github.io/My-Portfolio/" class="btn-submit">Back to Home</a>
   </div>
 </body>
 </html>
